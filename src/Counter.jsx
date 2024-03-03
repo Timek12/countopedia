@@ -6,16 +6,20 @@ class Counter extends React.Component {
     this.handleAttack = this.handleAttack.bind(this);
     this.handleDefence = this.handleDefence.bind(this);
     this.state = {
-        count:0
-    }
+      count: 0,
+    };
   }
 
   handleAttack() {
-    this.setState({count: this.state.count+1});
+    this.setState((previousState) => {
+      return { count: previousState.count + 1 };
+    });
   }
 
   handleDefence() {
-    this.setState({count: this.state.count-1});
+    this.setState((previousState) => {
+      return { count: previousState.count - 1 };
+    });
   }
 
   render() {
