@@ -3,17 +3,19 @@ import React from "react";
 class Counter extends React.Component {
   constructor(props) {
     super(props);
+    this.handleAttack = this.handleAttack.bind(this);
+    this.handleDefence = this.handleDefence.bind(this);
     this.state = {
         count:0
     }
   }
 
   handleAttack() {
-    alert("Attack clicked");
+    this.setState({count: this.state.count+1});
   }
 
   handleDefence() {
-    alert("Defend clicked");
+    this.setState({count: this.state.count-1});
   }
 
   render() {
