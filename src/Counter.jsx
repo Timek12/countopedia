@@ -12,15 +12,32 @@ class Counter extends React.Component {
     };
   }
 
-  handleAttack() {
+  handleAttack = () => {
     this.setState((previousState) => {
-      return { count: previousState.count + 1 };
+      let newCount = previousState.count + Math.round(Math.random() * 10);
+      return { count: newCount };
     });
   }
 
-  handleDefence() {
+  handleDefence = () => {
     this.setState((previousState) => {
-      return { count: previousState.count - 1 };
+      let newCount = previousState.count - Math.round(Math.random() * 10);
+      return { count: newCount };
+    });
+  }
+
+  handleRandomPlay = () => {
+    let playMode = Math.round(Math.random());
+    if (playMode == 0) {
+      this.handleAttack();
+    } else {
+      this.handleDefence();
+    }
+  }
+
+  handleReset = () => {
+    this.setState((previousState) => {
+      return { count: 0 };
     });
   }
 
@@ -59,9 +76,9 @@ class Counter extends React.Component {
           ></img>
         </div>
         <div className="col-12 col-md-4 offset-md-4">
-          <button className="btn btn-secondary w-100 mt-2">Random Play</button>
-          <br/>
-          <button className="btn btn-warning w-100 mt-2">Reset</button>
+          <button className="btn btn-secondary w-100 mt-2" onClick={this.handleRandomPlay}>Random Play</button>
+          <br />
+          <button className="btn btn-warning w-100 mt-2" onClick={this.handleReset}>Reset</button>
         </div>
       </div>
     );
